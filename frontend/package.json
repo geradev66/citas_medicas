@@ -1,0 +1,43 @@
+{
+    "name": "sakai-vue",
+    "version": "5.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint --fix . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    },
+    "dependencies": {
+        "@fullcalendar/core": "^6.1.20",
+        "@fullcalendar/daygrid": "^6.1.20",
+        "@fullcalendar/interaction": "^6.1.20",
+        "@fullcalendar/timegrid": "^6.1.20",
+        "@fullcalendar/vue3": "^6.1.20",
+        "@primeuix/themes": "^2.0.0",
+        "axios": "^1.16.1",
+        "chart.js": "3.3.2",
+        "pinia": "^3.0.4",
+        "primeicons": "^7.0.0",
+        "primevue": "^4.5.4",
+        "sweetalert2": "^11.26.24",
+        "tailwindcss-primeui": "^0.6.0",
+        "vite": "^7.3.3",
+        "vue": "^3.4.34",
+        "vue-router": "^4.4.0",
+        "vue-sweetalert2": "^5.0.11",
+        "vue3-toastify": "^0.2.9"
+    },
+    "devDependencies": {
+        "@primevue/auto-import-resolver": "^4.3.1",
+        "@rushstack/eslint-patch": "^1.8.0",
+        "@tailwindcss/vite": "^4.1.17",
+        "@vitejs/plugin-vue": "^6.0.7",
+        "@vue/eslint-config-prettier": "^9.0.0",
+        "eslint": "^8.57.0",
+        "eslint-plugin-vue": "^9.23.0",
+        "prettier": "^3.2.5",
+        "sass": "^1.55.0",
+        "tailwindcss": "^4.1.17",
+        "unplugin-vue-components": "^0.27.3"
+    }
+}
