@@ -1,8 +1,10 @@
 <script setup>
 import { useLayout } from '@/layout/composables/layout';
 import AppConfigurator from './AppConfigurator.vue';
+import { useAuth } from '@/composables/useAuth';
 
 const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
+const { logout, user } = useAuth();
 </script>
 
 <template>
@@ -60,18 +62,15 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
 
             <div class="layout-topbar-menu hidden lg:block">
                 <div class="layout-topbar-menu-content">
-                    <button type="button" class="layout-topbar-action">
-                        <i class="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" class="layout-topbar-action">
-                        <i class="pi pi-inbox"></i>
-                        <span>Messages</span>
-                    </button>
-                    <button type="button" class="layout-topbar-action">
+                    <span v-if="user?.name" class="layout-topbar-action text-sm opacity-80">
                         <i class="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
+                        <span>{{ user.name }}</span>
+                    </span>
+                <button type="button" class="layout-topbar-action" @click="logout" title="Cerrar sesión">
+                    <i class="pi pi-sign-out"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+          
                 </div>
             </div>
         </div>

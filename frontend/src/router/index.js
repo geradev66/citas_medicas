@@ -47,7 +47,13 @@ const router = createRouter({
                     name: 'areas',
                     meta: { requiresAuth: true },
                     component: () => import('../views/pages/Areas.vue')
-                }
+                },
+                {
+                    path: '/ingresos-egresos',
+                    name: 'ingresos-egresos',
+                    meta: { requiresAuth: true },
+                    component: () => import('../views/pages/IngresosEgresos.vue')
+                },
             ]
         },
         {

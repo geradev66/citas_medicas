@@ -66,6 +66,7 @@ const openEdit = (medico) => {
 const handleSave = async () => {
     if (!form.value.name?.trim() || !form.value.lastName?.trim() || !form.value.email?.trim()) return
 
+    // formatear la fecha de nacimiento
     const payload = {
         name: form.value.name,
         lastName: form.value.lastName,
@@ -136,6 +137,8 @@ watch(areas, () => {
         form.value.especiality = areas.value.find(a => (a._id ?? a.id) === prevEspId.value) ?? null
     }
 })
+
+// filtros para la tabla
 
 const filteredMedicos = computed(() => {
   const name = (filterName.value || '').toLowerCase().trim()

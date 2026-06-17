@@ -31,6 +31,11 @@ const model = ref([
                 icon: 'pi pi-fw pi-building',
                 to: '/areas'
             },
+            {
+                label: 'Ingresos Egresos',
+                icon: 'pi pi-fw pi-money-bill',
+                to: '/ingresos-egresos'
+            }
         ]
     }
 ]);
