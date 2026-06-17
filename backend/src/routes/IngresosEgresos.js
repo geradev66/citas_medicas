@@ -5,6 +5,7 @@ import auth from "../middleware/auth.js";
 const router = Router();
 
 router.get('/', auth, ingresosEgresosController.listar);
+router.get('/export/excel', auth, ingresosEgresosController.exportarExcel);
 router.get('/balance', auth, ingresosEgresosController.balance);
 router.get('/resumen/periodo', auth, ingresosEgresosController.resumenPorPeriodo);
 router.get('/resumen/area', auth, ingresosEgresosController.resumenPorArea);

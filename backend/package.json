@@ -6,6 +6,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "migrate": "node src/migrations/run.js",
+    "migrate:ingresos": "node src/migrations/run-update-ingresos.js",
+    "migrate:ingresos-optional": "node src/migrations/run-allow-null-ingresos.js",
     "migrate:undo": "node src/migrations/undo.js",
     "db:sync": "node src/migrations/sync.js"
   },

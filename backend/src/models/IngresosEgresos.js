@@ -20,7 +20,7 @@ const IngresosEgresos = sequelize.define('IngresosEgresos', {
     },
     areas: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Area,
             key: 'id'
@@ -32,11 +32,11 @@ const IngresosEgresos = sequelize.define('IngresosEgresos', {
     },
     descripcion: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     },
     pacientes: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Paciente,
             key: 'id'
@@ -44,15 +44,20 @@ const IngresosEgresos = sequelize.define('IngresosEgresos', {
     },
     proveedor: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     notasAdicionales: {
         type: DataTypes.TEXT,
         allowNull: true
     },
     estado: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'pendiente'
+    },
+    metodoPago: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }, {
     tableName: 'ingresos_egresos',

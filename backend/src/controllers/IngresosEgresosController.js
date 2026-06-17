@@ -2,6 +2,7 @@ import IngresosEgresos from '../models/IngresosEgresos.js';
 import Area from '../models/Area.js';
 import Paciente from '../models/Pacientes.js';
 import { obtenerBalance, obtenerResumenPorPeriodo, obtenerResumenPorArea } from '../../services/ingresosEgresos.service.js';
+import { exportIngresosEgresosToExcel } from '../../services/excelIngresosEgresos.service.js';
 
 class IngresosEgresosController {
     async listar(req, res){
@@ -84,6 +85,25 @@ class IngresosEgresosController {
         }catch(error){
             console.error('Error al eliminar el registro:', error);
             res.status(500).json({error: 'Error al eliminar el registro'})
+        }
+    }
+
+    async exportarExcel(req, res){
+        try{
+            const registros = await IngresosEgresos.findAll({
+                include: [
+                    { model: Area, as: 'areaInfo' },
+                    { model: Paciente, as: 'pacienteInfo' }
+                ]
+            });
+            const workbook = await exportIngresosEgresosToExcel(registros);
+            const buffer = await workbook.xlsx.writeBuffer();
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            res.setHeader('Content-Disposition', 'attachment; filename=ingresos_egresos.xlsx');
+            res.send(buffer);
+        }catch(error){
+            console.error('Error al exportar a Excel:', error);
+            res.status(500).json({error: 'Error al exportar a Excel'})
         }
     }
 

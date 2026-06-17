@@ -83,23 +83,24 @@ export default {
             fecha: { type: Sequelize.DATEONLY, allowNull: false },
             areas: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
                 references: { model: 'areas', key: 'id' },
                 onUpdate: 'CASCADE',
-                onDelete: 'RESTRICT'
+                onDelete: 'SET NULL'
             },
             monto: { type: Sequelize.DECIMAL(10, 2), allowNull: false },
-            descripcion: { type: Sequelize.TEXT, allowNull: false },
+            descripcion: { type: Sequelize.TEXT, allowNull: true },
             pacientes: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
                 references: { model: 'pacientes', key: 'id' },
                 onUpdate: 'CASCADE',
-                onDelete: 'RESTRICT'
+                onDelete: 'SET NULL'
             },
-            proveedor: { type: Sequelize.STRING, allowNull: false },
+            proveedor: { type: Sequelize.STRING, allowNull: true },
             notasAdicionales: { type: Sequelize.TEXT, allowNull: true },
-            estado: { type: Sequelize.BOOLEAN, defaultValue: true },
+            estado: { type: Sequelize.STRING, allowNull: false, defaultValue: 'pendiente' },
+            metodoPago: { type: Sequelize.STRING, allowNull: true },
             createdAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
             updatedAt: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') }
         });

@@ -1,10 +1,16 @@
 import sequelize from '../config/database.js';
-import migration from './20260527-create-all-tables.js';
+import createAllTables from './20260527-create-all-tables.js';
+import updateIngresosEgresos from './20260615-update-ingresos-egresos-estado-metodo-pago.js';
 
 const queryInterface = sequelize.getQueryInterface();
+const Sequelize = sequelize.Sequelize;
+
+const migrations = [createAllTables, updateIngresosEgresos];
 
 try {
-    await migration.up(queryInterface, sequelize.Sequelize);
+    for (const migration of migrations) {
+        await migration.up(queryInterface, Sequelize);
+    }
     console.log('Migraciones ejecutadas correctamente');
     process.exit(0);
 } catch (error) {
